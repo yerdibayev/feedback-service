@@ -1,0 +1,89 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/feedbacks": {
+            "get": {
+                "summary": "Get feedbacks",
+                "description": "List of feedbacks",
+                "operationId": "b4cf36d62eaa0f8ec6e1bc3769b6bf89",
+                "responses": {
+                    "200": {
+                        "description": "Get feedbacks"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Creates a feedback",
+                "description": "Creates a feedback",
+                "operationId": "81d32b52584ce7692767d874bf05c8bc",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name (required)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email (required)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone (nullable)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "City (nullable)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "description": "Subject (nullable)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "description": "Message (nullable)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "File (nullable)",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Create feedback"
+                    }
+                }
+            }
+        }
+    }
+}
