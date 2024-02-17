@@ -42,43 +42,45 @@ class FeedbackController extends Controller
      *     @OA\Parameter(
      *          name="name",
      *          in="query",
-     *          description="Name (required)",
-     *          @OA\Schema(type="string")
+     *          description="Name",
+     *          @OA\Schema(type="string"),
+     *          required=true
      *      ),
      *      @OA\Parameter(
      *          name="email",
      *          in="query",
-     *          description="Email (required)",
-     *          @OA\Schema(type="string")
+     *          description="Email",
+     *          @OA\Schema(type="string"),
+     *          required=true
      *      ),
      *     @OA\Parameter(
      *           name="phone",
      *           in="query",
-     *           description="Phone (nullable)",
+     *           description="Phone",
      *           @OA\Schema(type="string")
      *       ),
      *     @OA\Parameter(
      *           name="city",
      *           in="query",
-     *           description="City (nullable)",
+     *           description="City",
      *           @OA\Schema(type="string")
      *       ),
      *     @OA\Parameter(
      *            name="subject",
      *            in="query",
-     *            description="Subject (nullable)",
+     *            description="Subject",
      *            @OA\Schema(type="string")
      *        ),
      *     @OA\Parameter(
      *             name="message",
      *             in="query",
-     *             description="Message (nullable)",
+     *             description="Message",
      *             @OA\Schema(type="string")
      *         ),
      *     @OA\Parameter(
      *             name="file",
      *             in="query",
-     *             description="File (nullable)",
+     *             description="File",
      *             @OA\Schema(type="file")
      *         ),
      *     @OA\Response(response="201", description="Create feedback")
