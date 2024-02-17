@@ -7,13 +7,13 @@ use Illuminate\Validation\ValidationException;
 
 class FeedbackDTO
 {
-    public $name;
-    public $email;
-    public $phone;
-    public $city;
-    public $subject;
-    public $message;
-    public $file;
+    private $name;
+    private $email;
+    private $phone;
+    private $city;
+    private $subject;
+    private $message;
+    private $file;
 
     public function __construct(array $data)
     {
@@ -38,5 +38,40 @@ class FeedbackDTO
         $this->subject = $data['subject'];
         $this->message = $data['message'];
         $this->file = $data['file'];
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function getSubject(): ?string
+    {
+        return $this->subject;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
     }
 }
