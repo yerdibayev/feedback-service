@@ -75,7 +75,6 @@
                         "name": "file",
                         "in": "query",
                         "description": "File",
-                        "required": false,
                         "schema": {
                             "type": "file"
                         }
