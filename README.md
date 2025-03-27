@@ -5,7 +5,7 @@ A Laravel-based feedback management system with a RESTful API. This application 
 ## Installation
 
 1. download/clone the project.
-2. run `docker compose up -d --build`.
+2. run `docker compose up --build -d`.
 3. run `docker exec -it feedback_service_app composer install`.
 4. run `docker exec -it feedback_service_app php artisan migrate`.
 5. access https://127.0.0.1:8800.
