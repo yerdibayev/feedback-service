@@ -1,6 +1,13 @@
 ## About
 
-A Laravel-based feedback management system with a RESTful API. This application allows you to collect, store, and manage user feedback through a simple API interface. This project was developed as a test task.
+A Laravel-based feedback management system with a RESTful API. It contains a simple CRUD for feedbacks.
+This project was developed as a test task.
+
+## Used patterns
+
+- Resource pattern
+- Service pattern
+- Repository pattern
 
 ## Installation
 
