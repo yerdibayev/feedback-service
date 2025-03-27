@@ -7,8 +7,12 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
 /**
- * @OA\Info(title="My First API", version="0.1")
- */
+ * @OA\Info(title="Feedback API", version="0.1")
+
+ * @OA\PathItem(
+ *     path="/api"
+ * )
+*/
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;

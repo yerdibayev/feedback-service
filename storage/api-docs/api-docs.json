@@ -1,25 +1,39 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "My First API",
+        "title": "Feedback API",
         "version": "0.1"
     },
     "paths": {
+        "/api": {},
         "/api/feedbacks": {
             "get": {
+                "tags": [
+                    "Feedbacks"
+                ],
                 "summary": "Get feedbacks",
                 "description": "List of feedbacks",
-                "operationId": "b4cf36d62eaa0f8ec6e1bc3769b6bf89",
+                "operationId": "95a2c9d56322385bfadee77fbf184892",
                 "responses": {
                     "200": {
-                        "description": "Get feedbacks"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FeedbackListResponse"
+                                }
+                            }
+                        }
                     }
                 }
             },
             "post": {
+                "tags": [
+                    "Feedbacks"
+                ],
                 "summary": "Creates a feedback",
                 "description": "Creates a feedback",
-                "operationId": "81d32b52584ce7692767d874bf05c8bc",
+                "operationId": "ecfc1bfbcb56396041ab26e3e160e72f",
                 "parameters": [
                     {
                         "name": "name",
@@ -82,10 +96,282 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "Create feedback"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FeedbackResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/feedbacks/{feedback_id}": {
+            "get": {
+                "tags": [
+                    "Feedbacks"
+                ],
+                "summary": "Get feedback by ID",
+                "description": "Get feedback by ID",
+                "operationId": "8308b672c9d2bb047ec5a91ceb3a0f02",
+                "parameters": [
+                    {
+                        "name": "feedback_id",
+                        "in": "path",
+                        "description": "Feedback ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FeedbackResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Feedbacks"
+                ],
+                "summary": "Updates a feedback",
+                "description": "Updates a feedback",
+                "operationId": "e3e057ea92c3ec0e8155af50298064b8",
+                "parameters": [
+                    {
+                        "name": "feedback_id",
+                        "in": "path",
+                        "description": "Feedback ID",
+                        "required": true
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "Email",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "Phone",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "City",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "subject",
+                        "in": "query",
+                        "description": "Subject",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "message",
+                        "in": "query",
+                        "description": "Message",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "in": "query",
+                        "description": "File",
+                        "schema": {
+                            "type": "file"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/FeedbackResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Feedbacks"
+                ],
+                "summary": "Deletes a feedback",
+                "description": "Deletes a feedback",
+                "operationId": "71635ae1085c734447ef1bc6e1e27207",
+                "parameters": [
+                    {
+                        "name": "feedback_id",
+                        "in": "path",
+                        "description": "Feedback ID",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
                     }
                 }
             }
         }
-    }
+    },
+    "components": {
+        "schemas": {
+            "FeedbackListResponse": {
+                "description": "Feedback list response",
+                "required": [
+                    "success",
+                    "message",
+                    "data"
+                ],
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    },
+                    "data": {
+                        "properties": {
+                            "feedbacks": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/Feedback"
+                                }
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "FeedbackResponse": {
+                "description": "Feedback response",
+                "required": [
+                    "success",
+                    "message",
+                    "data"
+                ],
+                "properties": {
+                    "success": {
+                        "type": "boolean",
+                        "example": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "success"
+                    },
+                    "data": {
+                        "properties": {
+                            "feedback": {
+                                "$ref": "#/components/schemas/Feedback"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "Feedback": {
+                "description": "Feedback model",
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "phone",
+                    "city",
+                    "subject",
+                    "message"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "John Doe"
+                    },
+                    "email": {
+                        "type": "string",
+                        "example": "john@example.com"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "example": "1234567890",
+                        "nullable": true
+                    },
+                    "city": {
+                        "type": "string",
+                        "example": "New York",
+                        "nullable": true
+                    },
+                    "subject": {
+                        "type": "string",
+                        "example": "Test Subject",
+                        "nullable": true
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "This is a test message",
+                        "nullable": true
+                    },
+                    "file": {
+                        "type": "string",
+                        "example": "https://example.com/file.pdf",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "example": "2021-01-01 00:00:00"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "example": "2021-01-01 00:00:00"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Feedbacks",
+            "description": "API Endpoints for Feedback management"
+        }
+    ]
 }
