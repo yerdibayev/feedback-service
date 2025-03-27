@@ -20,4 +20,7 @@ use App\Http\Controllers\API\FeedbackController;
 //});
 
 Route::get('/feedbacks', [FeedbackController::class, 'index']);
+Route::get('/feedbacks/{feedback_id}', [FeedbackController::class, 'show']);
 Route::post('/feedbacks', [FeedbackController::class, 'store']);
+Route::put('/feedbacks/{feedback_id}', [FeedbackController::class, 'update']);
+Route::delete('/feedbacks/{feedback_id}', [FeedbackController::class, 'delete']);

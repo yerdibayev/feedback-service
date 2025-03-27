@@ -3,27 +3,40 @@
 namespace App\Http\Services;
 
 use App\Models\Feedback;
-use App\DTO\FeedbackDTO;
+use App\Repositories\FeedbackRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class FeedbackService
 {
-    public function saveFeedback(FeedbackDTO $feedbackDTO): Feedback
+    protected $feedbackRepository;
+
+    public function __construct(FeedbackRepository $feedbackRepository)
     {
-        $feedback = new Feedback();
-        $feedback->name = $feedbackDTO->getName();
-        $feedback->email = $feedbackDTO->getEmail();
-        $feedback->phone = $feedbackDTO->getPhone();
-        $feedback->city = $feedbackDTO->getCity();
-        $feedback->subject = $feedbackDTO->getSubject();
-        $feedback->message = $feedbackDTO->getMessage();
+        $this->feedbackRepository = $feedbackRepository;
+    }
 
-        if ($feedbackDTO->getFile()) {
-            $path = $feedbackDTO->getFile()->store('feedback_files');
-            $feedback->file = $path;
-        }
+    public function getAllFeedbacks(): Collection
+    {
+        return $this->feedbackRepository->getAllFeedbacks();
+    }
 
-        $feedback->save();
+    public function getFeedbackById($id): Feedback
+    {
+        return $this->feedbackRepository->getFeedbackById($id);
+    }
 
-        return $feedback;
+    public function createFeedback($data): Feedback
+    {
+        return $this->feedbackRepository->createFeedback($data);
+    }
+
+    public function updateFeedback($id, $data): Feedback
+    {
+        return $this->feedbackRepository->updateFeedback($id, $data);
+    }
+
+    public function deleteFeedback($id): bool
+    {
+        return $this->feedbackRepository->deleteFeedback($id);
     }
 }
